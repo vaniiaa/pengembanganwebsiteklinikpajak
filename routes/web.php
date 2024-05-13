@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListProductController;
+use App\Http\Controllers\ListProdukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ Route::get('/', function () {
 
 
 Route::get('/list_product', [ListProductController::class, 'tampilkan']);
+Route::get('/listproduk',  [ListProdukController::class, 'show']);
