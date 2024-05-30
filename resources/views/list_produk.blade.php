@@ -7,6 +7,7 @@
     <title>List Produk</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.11.1/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
 <body>
@@ -19,6 +20,7 @@
                     <th>Nama</th>
                     <th>Deskripsi Produk</th>
                     <th>Harga Produk</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +30,15 @@
                     <td>{{$item}}</td>
                     <td>{{$desc[$index]}}</td>
                     <td class="text-center">{{$harga[$index]}}</td>
+                    <td>
+                        <form action="{{ route('produk.delete', $id[$index]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="flex items-center px-4 py-2"
+                                onclick="return confirm('Are you sure you want to delete {{ $item }}?')"> <i class="fas fa-trash-alt mr-2"></i> Delete</button>
+                        </form>
+                    </td>
+                </tr>
                     @endforeach
             </tbody>
         </table>
